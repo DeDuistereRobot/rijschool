@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="rijschool" id="Project-f11" database="MySql" >
+	<schema name="rijschool" >
+		<table name="les" prior="tbl" >
+			<column name="lesid" type="INT" jt="4" mandatory="y" />
+			<column name="datum" type="DATE" jt="91" mandatory="y" />
+			<column name="start" type="DATETIME" jt="93" mandatory="y" />
+			<column name="duur" type="INT" jt="4" mandatory="y" />
+			<index name="pk_les" unique="PRIMARY_KEY" >
+				<column name="lesid" />
+			</index>
+			<fk name="fk_les_theorie" to_schema="rijschool" to_table="theorie" >
+				<fk_column name="lesid" pk="lesid" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="theorie" prior="tbl_0" >
+			<column name="capaciteit" type="INT" jt="4" mandatory="y" />
+			<column name="onderwerp" type="INT" jt="4" mandatory="y" />
+			<column name="lesid" type="INT" jt="4" mandatory="y" />
+			<index name="unq_theorie_lesid" unique="UNIQUE_KEY" >
+				<column name="lesid" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout-1e8" show_relation="columns" >
+		<entity schema="rijschool" name="les" color="C1D8EE" x="48" y="48" />
+		<entity schema="rijschool" name="theorie" color="C1D8EE" x="208" y="48" />
+	</layout>
+</project>
